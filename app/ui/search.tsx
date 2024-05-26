@@ -15,11 +15,14 @@ export default function Search({ placeholder }: { placeholder: string }) {
    
     const params = new URLSearchParams(searchParams);
     params.set('page', '1');
+
+    //set the params string based on the user’s input. If the input is empty, you want to delete it
     if (term) {
       params.set('query', term);
     } else {
       params.delete('query');
     }
+    // method of useRouter
     replace(`${pathname}?${params.toString()}`);
   }, 300);
   return (
